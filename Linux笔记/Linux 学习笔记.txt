@@ -9,7 +9,7 @@
 	3、硬件 设备文件名
 		硬件									设备文件名
 		IDE硬盘								/dev/hd[a-d]
-		SCSI/SATA/USB硬盘					/dev/sd[a-p]
+		SCSI/SATA/USB硬盘								/dev/sd[a-p]
 		光驱									/dev/cdrom 或者 /dev/sro
 		软盘									/dev/fd[0-1]
 		打印机（25针）						/dev/lp[0-2]
@@ -62,5 +62,5 @@
 		Web Server (网页服务器)
 		Virtual Host (虚拟主机)
 		Software development workstation (软件开发工作站)
-		
+
 
