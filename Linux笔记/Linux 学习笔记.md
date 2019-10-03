@@ -273,6 +273,7 @@
 	
 	范    例:$ cat /etc/issue
 			 $ cat -n /etc/services
+			 
 ** 注tac 可倒着显示文本内容 **
 
 ### 2.3 more
