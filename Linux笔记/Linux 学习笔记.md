@@ -356,3 +356,136 @@
 	> 3. 不能跨分区
 
 	> 4. 不能针对目录使用
+
+## 4. 权限管理命令
+
+### 4.1 chmod
+	命令名称:chmod
+		英文原意:change the permissions mode of a file    命令所在路径:/bin/chmod
+	执行权限:所有用户
+	功能描述:改变文件或目录权限
+	语    法:chmod [ugoa] {+-=} {rwx} [文件或目录]
+			 chmod [mode=421][文件或目录]
+			-R 递归修改
+
+	范    例: /tmp下有一个1.txt 权限为-rw-r--r-- ,给拥有者添加x(可执行权限)
+			 $ chmod u+x 1.txt
+
+			 给所属组添加写权限，其它人减少读权限
+			 $ chmod g+w,o-r 1.txt
+
+			 给所属组设置rwx权限
+			 $ chmod g=rwx 1.txt
+
+* 权限的数字表示
+	+ r —— 4
+	+ w —— 2
+	+ x —— 1
+
+	> rwx rw- r--
+	
+	> (7) (6) (4)
+
+	> 给1.txt 开启所有人的所有权限
+
+	> $ chmod 777 1.txt
+
+* **文件目录权限总结**
+
+ |代表字符|权限|对文件的含义|对目录的含义|
+ |----|----|----|----|
+ |r|读权限|可以查看文件内容|可以列出目录中的内容|
+ |w|写权限|可以修改文件内容|可以在目录中创建、删除文件|
+ |x|执行权限|可以执行文件|可以进入目录|
+
+ * **文件权限对应的一些命令**
+
+ |权限|命令|
+ |----|----|
+ |r|cat、more、head、tail、less|
+ |w|vim|
+ |x|script command|
+
+  * **目录权限对应的一些命令**
+
+ |权限|命令|
+ |----|----|
+ |r|ls|
+ |w|touch、mkdir、rmdir、rm|
+ |x|cd|
+
+
+### 4.2 chown
+	命令名称:chown
+		英文原意:change file ownership    命令所在路径:/bin/chown
+	执行权限:所有用户
+	功能描述:改变文件或目录的所有者
+	语    法:chown [用户] [文件或目录]
+
+	范    例:$ chown sky 1.txt
+			改变文件1.txt 的所有者为sky (只有root才可以执行)
+
+### 4.3 chgrp
+	命令名称:chgrp
+		英文原意:change file group ownership    命令所在路径:/bin/chgrp
+	执行权限:所有用户
+	功能描述:改变文件或目录的所属组
+	语    法:chmod [用户组] [文件或目录]
+
+	范    例:$ chgrp sgrp 1.txt
+			 改变1.txt的所属组为sgrp
+
+### 4.4 umask
+	命令名称:umask
+		英文原意:the user file-creation mask   命令所在路径:shell 内置命令
+	执行权限:所有用户
+	功能描述:显示、设置文件的缺省权限
+	语    法:umask [-S]
+			 -S 以rwx形式显示新建文件缺省权限 
+
+	范    例:$ umask -S
+			 如果单但使用umask 显示0022(第一个0为特殊权限)
+			 但是022是经过权限掩码的，真实的权限应为777 - 022 = 755
+
+			 假如我认为默认新建文件的权限应为rwxr-xr-- 754,则777 - 754 = 023
+			 使用umask 023 设置默认新建文件权限
+
+## 5. 文件搜索命令
+
+### 5.1 find
+	命令名称:find
+		英文原意:   命令所在路径:/bin/find
+	执行权限:所有用户
+	功能描述:文件搜索
+	语    法:find [搜索范围] [匹配条件]
+
+	范    例:$ find /etc -name init  (精准搜索，如果查找含"init"的文件可用"*init*"；如果查找"initxxx"的文件可用"init???")
+				在目录/etc 中查找文件init (-name 不区分大小写)
+
+			 $ find / -size +204800 (204800是数据块大小，1数据块=512字节=0.5k;100M=102400KB=204800数据块)
+			 	+n 大于  -n 小于  n等于
+
+			 $ find /home -user sky
+			 	在根目录下查找所有者为sky的文件
+			 	-group 根据所属组查找
+
+			 $ find /etc -cmin -5
+			 	在/etc 下查找5分钟被修改过属性的文件和目录
+			 	-amin 访问时间 access
+			 	-cmin 文件属性 change
+			 	-mmin 文件内容 modify
+
+			 $ find /etc -size +163840 -a -size -204800
+			 	在/etc 下查找大于80MB而小于100MB的文件
+			 	-a 两个条件同时满足(and)
+			 	-o 两个条件满足任意一个即可(or)
+
+			 $ find /etc -name inittab -exec ls {}\;
+			 	在/etc 下查找inittab 文件并显示详细信息
+			 	-exec/-ok  命令    {}\     ;    对搜索结果执行操作
+			 	(ok会询问) (ls -l) (格式) (结束)
+
+			 -type 根据文件类型查找 (软链接文件)
+			 	f 文件  d 目录
+
+			 -inum 根据i节点查找 (通过它来删除对应i节点的文件或查找硬链接)
