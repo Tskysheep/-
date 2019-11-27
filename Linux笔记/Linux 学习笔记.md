@@ -1,13 +1,60 @@
 # 目录
-[TOC]
+<!-- MarkdownTOC -->
+
+- [一 Linux系统简介](#%E4%B8%80-linux%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B)
+	- [1. 分区类型](#1-%E5%88%86%E5%8C%BA%E7%B1%BB%E5%9E%8B)
+	- [2. 格式化\(写入文件系统\)](#2-%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
+	- [3. 硬件 设备设备文件名](#3-%E7%A1%AC%E4%BB%B6-%E8%AE%BE%E5%A4%87%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%90%8D)
+	- [4. 挂载\(盘符\)](#4-%E6%8C%82%E8%BD%BD%E7%9B%98%E7%AC%A6)
+	- [5. 文件系统](#5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F)
+- [二 系统安装](#%E4%BA%8C-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85)
+	- [1. 安装欢迎界面](#1-%E5%AE%89%E8%A3%85%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2)
+	- [2. 软件包选择](#2-%E8%BD%AF%E4%BB%B6%E5%8C%85%E9%80%89%E6%8B%A9)
+	- [3. 安装日志](#3-%E5%AE%89%E8%A3%85%E6%97%A5%E5%BF%97)
+	- [4. 注意事项](#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
+	- [5. Liunx各目录的作用](#5-liunx%E5%90%84%E7%9B%AE%E5%BD%95%E7%9A%84%E4%BD%9C%E7%94%A8)
+	- [6. 服务器注意事项](#6-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
+- [三 常用命令](#%E4%B8%89-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4)
+	- [1. 目录处理命令](#1-%E7%9B%AE%E5%BD%95%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4)
+		- [1.1 ls](#11-ls)
+		- [1.2 mkdir](#12-mkdir)
+		- [1.3 cd](#13-cd)
+		- [1.4 pwd](#14-pwd)
+		- [1.5 rmdir](#15-rmdir)
+		- [1.6 cp](#16-cp)
+		- [1.7 mv](#17-mv)
+		- [1.8 rm](#18-rm)
+	- [2. 文件处理命令](#2-%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4)
+		- [2.1 touch](#21-touch)
+		- [2.2 cat](#22-cat)
+		- [2.3 more](#23-more)
+		- [2.4 less](#24-less)
+		- [2.5 head](#25-head)
+		- [2.6 tail](#26-tail)
+	- [3. 链接命令](#3-%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4)
+		- [3.1 ln](#31-ln)
+	- [4. 权限管理命令](#4-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4)
+		- [4.1 chmod](#41-chmod)
+		- [4.2 chown](#42-chown)
+		- [4.3 chgrp](#43-chgrp)
+		- [4.4 umask](#44-umask)
+	- [5. 文件搜索命令](#5-%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4)
+		- [5.1 find](#51-find)
+
+<!-- /MarkdownTOC -->
+
+<a id="%E4%B8%80-linux%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"></a>
 # 一 Linux系统简介
+<a id="1-%E5%88%86%E5%8C%BA%E7%B1%BB%E5%9E%8B"></a>
 ## 1. 分区类型
 * 主分区：最多只能4个分区
 * 扩展分区：最多只能一个(主分区+扩展分区最多有4个，不能写入数据，只能包含逻辑分区)
 * 逻辑分区
 
+<a id="2-%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"></a>
 ## 2. 格式化(写入文件系统)
 
+<a id="3-%E7%A1%AC%E4%BB%B6-%E8%AE%BE%E5%A4%87%E8%AE%BE%E5%A4%87%E6%96%87%E4%BB%B6%E5%90%8D"></a>
 ## 3. 硬件 设备设备文件名
 
 |设备|设备文件名|
@@ -20,6 +67,7 @@
 |打印机(USB)|/dev/usb/lp[0-15]|
 |鼠标|/dev/mouse|
 
+<a id="4-%E6%8C%82%E8%BD%BD%E7%9B%98%E7%AC%A6"></a>
 ## 4. 挂载(盘符)
 * 必须分区
 	+ / (根分区)
@@ -27,6 +75,7 @@
 * 推荐分区
 	+ /boot (启动分区 200MB)
 
+<a id="5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"></a>
 ## 5. 文件系统
 
 ```
@@ -46,7 +95,9 @@
 
 *** (可以给子目录分配一个磁盘) ***
 
+<a id="%E4%BA%8C-%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"></a>
 # 二 系统安装
+<a id="1-%E5%AE%89%E8%A3%85%E6%AC%A2%E8%BF%8E%E7%95%8C%E9%9D%A2"></a>
 ## 1. 安装欢迎界面
 * Install or upgrade an existing system (安装或者升级现有的系统)
 * Install system with basic vido driver (安装过程采用基本显卡驱动)
@@ -54,6 +105,7 @@
 * Boot from local drive  (退出安装从硬盘启动)
 * Memory test (存储介质检测)
 
+<a id="2-%E8%BD%AF%E4%BB%B6%E5%8C%85%E9%80%89%E6%8B%A9"></a>
 ## 2. 软件包选择
 * Desktop (桌面)
 * Minimal Desktop (最小化桌面)
@@ -64,11 +116,13 @@
 * Virtual Host (虚拟主机)
 * Software development workstation (软件开发工作站)
 
+<a id="3-%E5%AE%89%E8%A3%85%E6%97%A5%E5%BF%97"></a>
 ## 3. 安装日志
 * /root/install.log :储存了安装在系统中的软件包及其版本信息
 * /root/install.log.syslog :储存了安装过程中留下的事件记录
 * /root/anaconda-ks.cfg :以kickstart配置文件的格式记录它安装过程中设置的选项信息
 
+<a id="4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"></a>
 ## 4. 注意事项
 * Linux严格区分大小写
 * Linux中所有内容以文件形式保存，包括硬件
@@ -88,6 +142,7 @@
 * Linux所有的存储系统设备都必须挂载之后用户才能使用
 * Windows下的程序不能直接在Linux中安装和运行
 
+<a id="5-liunx%E5%90%84%E7%9B%AE%E5%BD%95%E7%9A%84%E4%BD%9C%E7%94%A8"></a>
 ## 5. Liunx各目录的作用
 
 |目录名|目录作用|
@@ -114,6 +169,7 @@
 |/usr/|系统软件资源目录，注意"usr"不是"user"的缩写，而是"Unix Software Resource"的缩写，所以不是存放用户数据的，而是存放系统软件资源的目录，系统中安装的软件大多数都保存在这里。|
 |/var/|动态数据保存位置，主要保存缓存，日志以及软件运行所产生的文件|
 
+<a id="6-%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"></a>
 ## 6. 服务器注意事项
 * 远程服务器不允许关机，只能重启
 * 重启时应该关闭服务
@@ -123,6 +179,7 @@
 * 合理分配权限
 * 定期备份重要数据和日志
 
+<a id="%E4%B8%89-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"></a>
 # 三 常用命令
 	命令格式： 命令 [-选项][参数]
 	例如:ls -la /etc
@@ -130,8 +187,10 @@
 	     2)当有多个选项时，可以写在一起
 	     3)简化项与完整选项-a 等于 --all
 
+<a id="1-%E7%9B%AE%E5%BD%95%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"></a>
 ## 1. 目录处理命令
 
+<a id="11-ls"></a>
 ### 1.1 ls
 	命令名称:ls
 		英文原意:ls    命令所在路径:/bin/ls
@@ -162,6 +221,7 @@
 |----|----|----|
 |可读|可写|可执行|
 
+<a id="12-mkdir"></a>
 ### 1.2 mkdir
 	命令名称:mkdir
 		英文原意:make directories    命令所在路径:/bin/mkdir
@@ -174,6 +234,7 @@
 			$ mkdir -p /tmp/sky1/xx2
 			$ mkdir /tmp/sky1/test /tmp/sky1/test2
 
+<a id="13-cd"></a>
 ### 1.3 cd 
 	命令名称:cd
 		英文原意:change directories    命令所在路径:shell 内置命令
@@ -185,6 +246,7 @@
 			$ cd /tmp/sky1/test1  切换到指定目录
 			$ cd ..               回到上一级目录
 
+<a id="14-pwd"></a>
 ### 1.4 pwd
 	命令名称:pwd
 		英文原意:print working directory    命令所在路径:/bin/pwd
@@ -196,6 +258,7 @@
 			$ pwd
 			 /tmp/sky1
 
+<a id="15-rmdir"></a>
 ### 1.5 rmdir
 	命令名称:rmdir
 		英文原意:remove empty directories    命令所在路径:shell 内置命令
@@ -207,6 +270,7 @@
 			$ rmdir /tmp/sky1/test1
 
 
+<a id="16-cp"></a>
 ### 1.6 cp
 	命令名称:cp
 		英文原意:copy    命令所在路径:/bin/cp
@@ -227,6 +291,7 @@
 			将/tmp/sky1 目录下的test2 复制到/root 下，并命名为test3
 
 
+<a id="17-mv"></a>
 ### 1.7 mv
 	命令名称:mv
 		英文原意:move    命令所在路径:/bin/mv
@@ -235,6 +300,7 @@
 	语    法:mv [原文件或目录] [目标目录]
 
 
+<a id="18-rm"></a>
 ### 1.8 rm
 	命令名称:rm
 		英文原意:remove    命令所在路径:/bin/rm
@@ -251,8 +317,10 @@
 			$ rm -rf /tmp/sky1/test1
 			删除目录/tmp/sky1/test1
 
+<a id="2-%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"></a>
 ## 2. 文件处理命令
 
+<a id="21-touch"></a>
 ### 2.1 touch
 	命令名称:touch
 		英文原意:    命令所在路径:/bin/touch
@@ -263,6 +331,7 @@
 	范    例:$ touch skys.list
 			 $ touch "sky test"(创建名字带空格的文件)
 
+<a id="22-cat"></a>
 ### 2.2 cat
 	命令名称:cat
 		英文原意:    命令所在路径:/bin/cat
@@ -276,6 +345,7 @@
 			 
 ** 注tac 可倒着显示文本内容 **
 
+<a id="23-more"></a>
 ### 2.3 more
 	命令名称:more
 		英文原意:    命令所在路径:/bin/more
@@ -288,6 +358,7 @@
 
 	范    例:$ more /etc/services
 
+<a id="24-less"></a>
 ### 2.4 less
 	命令名称:less
 		英文原意:    命令所在路径:/usr/bin/less
@@ -298,6 +369,7 @@
 	范    例:$ less /etc/services
 	也可以寻找，输入"/" + 寻找内容，按N可以找下一个关键词
 
+<a id="25-head"></a>
 ### 2.5 head
 	命令名称:head
 		英文原意:    命令所在路径:/usr/bin/head
@@ -308,6 +380,7 @@
 
 	范    例:$ head -n 20 /etc/services
 
+<a id="26-tail"></a>
 ### 2.6 tail
 	命令名称:tail
 		英文原意:   命令所在路径:/usr/bin/tail
@@ -320,8 +393,10 @@
 	范    例:$ tail -n 18 /etc/services
 
 
+<a id="3-%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4"></a>
 ## 3. 链接命令
 
+<a id="31-ln"></a>
 ### 3.1 ln
 	命令名称:ln
 		英文原意:link    命令所在路径:/bin/ln
@@ -357,8 +432,10 @@
 
 	> 4. 不能针对目录使用
 
+<a id="4-%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"></a>
 ## 4. 权限管理命令
 
+<a id="41-chmod"></a>
 ### 4.1 chmod
 	命令名称:chmod
 		英文原意:change the permissions mode of a file    命令所在路径:/bin/chmod
@@ -415,6 +492,7 @@
  |x|cd|
 
 
+<a id="42-chown"></a>
 ### 4.2 chown
 	命令名称:chown
 		英文原意:change file ownership    命令所在路径:/bin/chown
@@ -425,6 +503,7 @@
 	范    例:$ chown sky 1.txt
 			改变文件1.txt 的所有者为sky (只有root才可以执行)
 
+<a id="43-chgrp"></a>
 ### 4.3 chgrp
 	命令名称:chgrp
 		英文原意:change file group ownership    命令所在路径:/bin/chgrp
@@ -435,6 +514,7 @@
 	范    例:$ chgrp sgrp 1.txt
 			 改变1.txt的所属组为sgrp
 
+<a id="44-umask"></a>
 ### 4.4 umask
 	命令名称:umask
 		英文原意:the user file-creation mask   命令所在路径:shell 内置命令
@@ -450,8 +530,10 @@
 			 假如我认为默认新建文件的权限应为rwxr-xr-- 754,则777 - 754 = 023
 			 使用umask 023 设置默认新建文件权限
 
+<a id="5-%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4"></a>
 ## 5. 文件搜索命令
 
+<a id="51-find"></a>
 ### 5.1 find
 	命令名称:find
 		英文原意:   命令所在路径:/bin/find
