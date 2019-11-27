@@ -1,5 +1,6 @@
 # 目录
-<!-- MarkdownTOC -->
+<details>
+<summary>点击展开目录</summary><!-- MarkdownTOC -->
 
 - [一 Linux系统简介](#%E4%B8%80-linux%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B)
 	- [1. 分区类型](#1-%E5%88%86%E5%8C%BA%E7%B1%BB%E5%9E%8B)
@@ -42,6 +43,10 @@
 		- [5.1 find](#51-find)
 
 <!-- /MarkdownTOC -->
+
+
+</details>
+
 
 <a id="%E4%B8%80-linux%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"></a>
 # 一 Linux系统简介
